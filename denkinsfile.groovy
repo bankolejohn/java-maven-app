@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    environment {
+
+    }
+    parameters {
+        choice(name: 'VERSION', choices: ['1.0', '1.1'])
+        booleanParam(name: 'executeTests', defaultValue: true)
+    }
 
     stages {
         stage("build") {
@@ -9,6 +16,12 @@ pipeline {
 
             }
         stage("test") {
+            when {
+                expression {
+                    BRANCH_NAME == 'jenkins-jobs'
+
+                }
+            }
             steps {
                 echo 'testing the app...'
             }
@@ -17,8 +30,12 @@ pipeline {
             steps {
                 echo 'deploying the app...'
                 echo 'execution successful'
+                echo "deploying ${params.VERSION}"
             }
         }
+
+    }
+    post {
 
     }
 }
