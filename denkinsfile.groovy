@@ -16,7 +16,7 @@ pipeline {
         stage("test") {
             when {
                 expression {
-                    BRANCH_NAME == 'jenkins-jobs'
+                    BRANCH_NAME == 'jenkins-job'
 
                 }
             }
