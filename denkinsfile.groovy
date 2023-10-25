@@ -32,9 +32,5 @@ pipeline {
             }
         }
 
-    }
-    post {
-
-    }
 }
     
