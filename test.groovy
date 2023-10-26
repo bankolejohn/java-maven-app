@@ -1,5 +1,5 @@
 def buildJar() {
-    sh 'maven package'
+    sh 'mvn package'
 }
 
 def buildAppImage() {
